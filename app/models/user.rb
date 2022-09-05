@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
    has_many :books,dependent: :destroy
+   
+  def index
+  end
          
   def show
   end
