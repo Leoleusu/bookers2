@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'devise/shared/info' %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><%= link_to @book.user do %><%= image_tag @book.user.get_image(100,100) %><br />
+              <%= @book.user.name %><% end %></td>
+              <td><%= link_to book_path do %><%= @book.title %><% end %></td>
+              <td><%= @book.body %></td>
+              <% if @book.user == current_user %>
+                <td><%= link_to "Edit",edit_book_path,class: "btn btn-sm btn-success" %></td>
+                <td><%= link_to "Destroy",book_path(@book),class: "btn btn-sm btn-danger",method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

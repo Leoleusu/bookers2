@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h1>Editing Book</h1>
+      <%= render 'devise/shared/error_messages',resource: @book %>
+      <%= form_with model: @book do |b| %>
+        <div class="form-group">
+          <%= b.label :Title %><br/>
+          <%= b.text_field :title,autofocus: true,autocomplete: "title",class: "form-control title" %>
+        </div>
+        <div class="form-group">
+          <%= b.label :Opinion %><br/>
+          <%= b.text_area :body,class: "form-control body" %>
+        </div>
+        <div class="form-group">
+          <%= b.submit "Update Book",class: "btn btn-success" %>
+        </div>
+        <% end %>
+        <%= link_to "Show",book_path %> | <%= link_to "Back",books_path %>
+    </div>
+  </div>
+</div>
