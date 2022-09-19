@@ -3,9 +3,8 @@
     <div class="col-md-3">
       <h2>User info</h2>
     <table class="table">
-      <%= form_with model: @user do|user| %>
         <tbody>
-          <tr><%= image_tag @user.get_image(100,100) %></tr>
+          <tr><%= image_tag @user.get_profile_image(100,100) %></tr>
           <tr>
             <th>name</th>
             <th><%= @user.name %></th>
@@ -15,7 +14,6 @@
             <th><%= @user.introduction %></th>
           </tr>
         </tbody>
-      <% end %>
     </table>
   <div class="row">
     <%= link_to edit_user_path(@user),class: "btn btn-outline-secondary btn-block" do %>
@@ -23,7 +21,7 @@
     <% end %>
 </div>
   <h2 class="mt-3">New book</h2>
-  <%= form_with model: Book,local: true do |f| %>
+  <%= form_with model: Book.new, local: true do |f| %>
     <div class="form-group">
       <h6>Title</h6>
       <%= f.text_field :title,class: "form-control title" %>
@@ -51,7 +49,7 @@
         <tbody>
           <% @book.each do |book| %>
           <tr>
-            <td><%= link_to(user_path(current_user.id)) do %><%= image_tag book.user.get_image(80,80) %><% end %></td>
+            <td><%= link_to(user_path(book.user.id)) do %><%= image_tag book.user.get_profile_image(80,80) %><% end %></td>
             <td><%= link_to (book_path(book.id)) do %><%= book.title %><% end %></td>
             <td><%= book.body %></td>
           </tr>
